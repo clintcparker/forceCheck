@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://clintcparker.kodingen.com/forceCheck_demo.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="./forceCheck_demo_files/grid.css">
+<script type="text/javascript" src="./forceCheck_demo_files/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="./forceCheck_demo_files/forceCheck.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('#checkbox1').attr("disabled","");
+    $('#fcheck').click(function(){
+        if ($('#fcheck').attr("value") == "force check") {
+            $('#nofcheck').attr("disabled","disabled");
+            $('#fcheck').attr("value","force uncheck");
+            $('#checkbox1').forceCheck();
+        } else {
+            $('#nofcheck').attr("disabled","");
+            $('#fcheck').attr("value","force check");
+            $('#checkbox1').forceUnCheck();
+        }
+    });
+
+    $('#nofcheck').click(function(){
+        if ($('#nofcheck').attr("value") == "check and disable") {
+            $('#fcheck').attr("disabled","disabled");
+            $('#nofcheck').attr("value","uncheck and enable");
+            $('#checkbox1').attr("checked","checked");
+            $('#checkbox1').attr("disabled","disabled");
+        } else {
+            $('#fcheck').attr("disabled","");
+            $('#nofcheck').attr("value","check and disable");
+            $('#checkbox1').attr("checked","");
+            $('#checkbox1').attr("disabled","");
+        }
+    });
+
+
+    var $form = $('[name="form1"]');
+    var $div = $('#form1');
+    $('#post').click(function(){
+        $div.html($form.serialize());
+    });
+
+
+});
+
+
+</script>
+</head>
+<body>
+<div class="container">
+<form name="form1" class="span-12">
+<p>Set the checkbox with the buttons and compare the post data.</p>
+<input type="button" id="fcheck" value="force check">
+<input type="button" id="nofcheck" value="check and disable">
+<br>
+<br>
+<br>
+<br>
+<br>
+<label><input type="checkbox" name="checkbox1" id="checkbox1" value="true">Checkbox 1</label>
+<input type="button" id="post" value="See Post Data">
+</form>
+<div id="form1" class="span-12 last"></div>
+
+
+
+
+
+</div>
+
+</body></html>
