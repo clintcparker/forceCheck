@@ -9,11 +9,11 @@ $(function(){
     $('#checkbox1').attr("disabled","");
     $('#fcheck').click(function(){
         if ($('#fcheck').attr("value") == "force check") {
-            $('#nofcheck').attr("disabled","disabled");
+            $('#nofcheck').prop("disabled",true);
             $('#fcheck').attr("value","force uncheck");
             $('#checkbox1').forceCheck();
         } else {
-            $('#nofcheck').attr("disabled","");
+            $('#nofcheck').prop("disabled",false);
             $('#fcheck').attr("value","force check");
             $('#checkbox1').forceUnCheck();
         }
@@ -21,15 +21,15 @@ $(function(){
 
     $('#nofcheck').click(function(){
         if ($('#nofcheck').attr("value") == "check and disable") {
-            $('#fcheck').attr("disabled","disabled");
+            $('#fcheck').prop("disabled",true);
             $('#nofcheck').attr("value","uncheck and enable");
-            $('#checkbox1').attr("checked","checked");
-            $('#checkbox1').attr("disabled","disabled");
+            $('#checkbox1').prop("checked",true);
+            $('#checkbox1').prop("disabled",true);
         } else {
-            $('#fcheck').attr("disabled","");
+            $('#fcheck').prop("disabled",false);
             $('#nofcheck').attr("value","check and disable");
-            $('#checkbox1').attr("checked","");
-            $('#checkbox1').attr("disabled","");
+            $('#checkbox1').prop("checked",false);
+            $('#checkbox1').prop("disabled",false);
         }
     });
 
