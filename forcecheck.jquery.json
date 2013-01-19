@@ -1,0 +1,33 @@
+{
+    "name":"forcecheck",
+    "title":"forceCheck",
+    "description":"JQuery plugin for checked and disabled checkboxes.",
+    "keywords":["forms", "checkbox", "checked", "checkboxes", "clintcparker"],
+    "version":"0.1.0",
+    "author":{
+        "name":"Clint Parker",
+        "email":"clintcparker@gmail.com",
+        "url":"http://www.clintparker.com"
+    },
+    "maintainers": [
+        {
+            "name":"Clint Parker",
+            "email":"clintcparker@gmail.com",
+            "url":"http://www.clintparker.com"
+        }
+    ],
+    "licenses": [
+        {
+          "type": "WTFPL",
+          "url": "http://www.wtfpl.net/"
+        }
+    ],
+    "bugs":"https://github.com/clintcparker/forceCheck/issues",
+    "homepage":"http://clintcparker.github.com/forceCheck/",
+    "docs":"https://github.com/clintcparker/forceCheck",
+    "download":"https://github.com/clintcparker/forceCheck",
+    "dependencies":{
+        "jquery":">=1.7"
+    }
+    
+}
