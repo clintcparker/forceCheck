@@ -28,8 +28,10 @@ $.fn.forceCheck = function(options) {
         var $this = $(this);
         if ($this.is("input")) {
             if ($this.attr("type") == "checkbox") {
-                $this.prop("checked", true);
-                $this.prop("disabled", true);
+                $this.prop({
+                  disabled: true,
+                  checked:true
+                });
                 $this.after('<input type="hidden" checked="checked" name="' + $this.attr("name") + '" value="' + $this.attr("value") + '" class="forcecheck" />');
             }
         }
@@ -41,10 +43,11 @@ $.fn.forceUnCheck = function(options) {
         var $this = $(this);
         if ($this.is("input")) {
             if ($this.attr("type") == "checkbox") {
-                $this.prop("disabled", false);
-                $this.prop("checked", false);
-                $('input.forcecheck').remove('[name=' + $this.attr("name") + ']');
-
+                $this.prop({
+                  disabled: false,
+                  checked:false
+                });
+                $this.next().remove('[name=' + $this.attr("name") + ']');
             }
         }
     });

@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)http://clintcparker.kodingen.com/forceCheck_demo.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<html><head>
 <link rel="stylesheet" type="text/css" href="./forceCheck_demo_files/grid.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-<script type="text/javascript" src="./forceCheck_demo_files/forceCheck.js"></script>
+<script type="text/javascript" src="forceCheck.js"></script>
 <script type="text/javascript">
 $(function(){
-    $('#checkbox1').attr("disabled","");
-    $('#fcheck').click(function(){
-        if ($('#fcheck').attr("value") == "force check") {
-            $('#nofcheck').prop("disabled",true);
-            $('#fcheck').attr("value","force uncheck");
-            $('#checkbox1').forceCheck();
+    //Variables
+    var strForceCheck = "force check";
+    var strCheckAndDisable = "check and disable";
+    
+    //jQuery caches
+    var $checkbox = $('#checkbox1');
+    var $forceCheckButton = $('#fcheck');
+    var $notForceCheckButton = $('#nofcheck');
+    var $form = $('[name="form1"]');
+    var $div = $('#formData');
+    
+    
+    $checkbox.prop("disabled", false);
+    $forceCheckButton.click(function(){
+        if ($forceCheckButton.attr("value") == strForceCheck) {
+            $notForceCheckButton.prop("disabled",true);
+            $forceCheckButton.attr("value","force uncheck");
+            $checkbox.forceCheck();
         } else {
             $('#nofcheck').prop("disabled",false);
-            $('#fcheck').attr("value","force check");
-            $('#checkbox1').forceUnCheck();
+            $('#fcheck').attr("value",strForceCheck);
+            $checkbox.forceUnCheck();
         }
     });
 
-    $('#nofcheck').click(function(){
-        if ($('#nofcheck').attr("value") == "check and disable") {
-            $('#fcheck').prop("disabled",true);
-            $('#nofcheck').attr("value","uncheck and enable");
-            $('#checkbox1').prop("checked",true);
-            $('#checkbox1').prop("disabled",true);
+    $notForceCheckButton.click(function(){
+        if ($notForceCheckButton.attr("value") == strCheckAndDisable) {
+            $forceCheckButton.prop("disabled",true);
+            $notForceCheckButton.attr("value","uncheck and enable");
+            $checkbox.prop("checked",true).prop("disabled",true);
         } else {
-            $('#fcheck').prop("disabled",false);
-            $('#nofcheck').attr("value","check and disable");
-            $('#checkbox1').prop("checked",false);
-            $('#checkbox1').prop("disabled",false);
+            $forceCheckButton.prop("disabled",false);
+            $notForceCheckButton.attr("value",strCheckAndDisable);
+            $checkbox.prop("checked",false).prop("disabled",false);
         }
     });
 
 
-    var $form = $('[name="form1"]');
-    var $div = $('#form1');
+    
     $('#post').click(function(){
         $div.html($form.serialize());
     });
@@ -47,25 +55,19 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="container">
-<form name="form1" class="span-12">
-<p>Set the checkbox with the buttons and compare the post data.</p>
-<input type="button" id="fcheck" value="force check">
-<input type="button" id="nofcheck" value="check and disable">
-<br>
-<br>
-<br>
-<br>
-<br>
-<label><input type="checkbox" name="checkbox1" id="checkbox1" value="true">Checkbox 1</label>
-<input type="button" id="post" value="See Post Data">
-</form>
-<div id="form1" class="span-12 last"></div>
-
-
-
-
-
-</div>
-
+    <div class="container">
+        <form name="form1" class="span-12">
+            <p>Set the checkbox with the buttons and compare the post data.</p>
+            <input type="button" id="fcheck" value="force check">
+            <input type="button" id="nofcheck" value="check and disable">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <label><input type="checkbox" name="checkbox1" id="checkbox1" value="true">Checkbox 1</label>
+            <input type="button" id="post" value="See Post Data">
+        </form>
+        <div id="formData" class="span-12 last"></div>
+    </div>
 </body></html>
